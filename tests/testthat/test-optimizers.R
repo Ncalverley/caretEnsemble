@@ -69,12 +69,8 @@ predobs <- makePredObsMatrix(test2)
 weights1 <- safeOptAUC(predobs$preds, as.integer(predobs$obs))
 weights3 <- greedOptAUC(predobs$preds, predobs$obs)
 
-
-
-weights[! is.finite(weights)] <- 0
-
-ens <- caretEnsemble(test2, optFUN=qpOptAUC)
-ens.old <- caretEnsemble(test2)
+ens <- caretEnsemble(test2, optFUN = safeOptAUC)
+ens.old <- caretEnsemble(test2, optFUN = greedOptAUC)
 
 
 #Normalize and name weights

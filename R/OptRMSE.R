@@ -6,7 +6,6 @@
 #' @return A numeric of the weights for each model
 #' @export
 greedOptRMSE <- function(X, Y, iter = 100L){
-  
   N           <- ncol(X)
   weights     <- rep(0L, N)
   pred        <- 0 * X
