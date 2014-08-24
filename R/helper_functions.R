@@ -132,9 +132,9 @@ makePredObsMatrix <- function(list_of_models){
 #' @importFrom pbapply pbsapply
 multiPredict <- function(list_of_models, type, ...){
   #TODO: Add progressbar argument
-  preds <- pbsapply(list_of_models, function(x){
+  preds <- pbsapply(list_of_models, function(x){    
     if (type=='Classification' & x$control$classProbs){
-      predict(x, type='prob', ...)[,2]
+      as.data.frame(predict(x, type='prob', ...))[,2]
     } else {
       predict(x, type='raw', ...)
     }
