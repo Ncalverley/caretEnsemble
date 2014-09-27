@@ -133,9 +133,9 @@ multiPredict <- function(list_of_models, type, ...){
   #TODO: Add progressbar argument
   preds <- pbsapply(list_of_models, function(x){    
     if (type=='Classification' & x$control$classProbs){
-      as.data.frame(predict(x, type='prob'))[,2]
+      as.data.frame(predict(x, type='prob', ...))[,2]
     } else {
-      predict(x, type='raw')
+      predict(x, type='raw', ...)
     }
   })
   colnames(preds) <- make.names(sapply(list_of_models, function(x) x$method), unique=TRUE)

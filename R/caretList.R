@@ -88,10 +88,7 @@ buildModels <- function(methodList, control, x, y, tuneList = NULL, baseSeed = N
   #
   modelList <- sapply(methodList, function(x) NULL)
 
-  for(i in methodList){
-    
-    print(paste0("Building Model ", i, " ....."))
-    
+  for(i in methodList){    
     set.seed(baseSeed) # so splits are same across resamples
     if(missing(tuneList)){
       modelList[[i]] <- train(x = x, y=y, method = i, trControl = ctrl, 
