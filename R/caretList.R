@@ -113,6 +113,8 @@ buildModels <- function(methodList, control, x, y, tuneList = NULL, baseSeed = N
    
   }
   
+  modelList_global <<- modelList
+  
   print("FINISHED - All Models Built")
   
   return(modelList)
