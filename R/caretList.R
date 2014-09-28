@@ -112,5 +112,8 @@ buildModels <- function(methodList, control, x, y, tuneList = NULL, baseSeed = N
     }
    
   }
+  
+  print("FINISHED - All Models Built")
+  
   return(modelList)
 }
