@@ -137,6 +137,8 @@ caretList <- function(
   tuneList = NULL,
   continue_on_model_fail=FALSE) {
 
+  print("Got to point 1")
+
   #Checks
   if(is.null(tuneList) & is.null(methodList)){
     stop('Please either define a methodList or tuneList')
@@ -156,6 +158,8 @@ caretList <- function(
   #Make sure tuneList is valid
   tuneList <- tuneCheck(tuneList)
 
+  print("Got to point 2")
+
   #Capture global arguments for train as a list
   global_args <- list(...)
 
@@ -164,6 +168,8 @@ caretList <- function(
     target <- extractCaretTarget(...)
     trControl <- trControlCheck(x=trControl, y=target)
   }
+
+  print("Got to point 3")
 
   #Squish trControl back onto the global arguments list
   global_args[['trControl']] <- trControl
@@ -188,6 +194,9 @@ caretList <- function(
       return(model)
     })
   }
+
+  print("Got to point 4")
+
   names(modelList) <- names(tuneList)
   nulls <- sapply(modelList, is.null)
   modelList <- modelList[!nulls]
