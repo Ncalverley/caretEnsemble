@@ -40,7 +40,7 @@ checkModels_extractTypes <- function(list_of_models){
   }
 
   #Check that all models saved their predictions so we can ensemble them
-  stopifnot(all(sapply(list_of_models, function(x) x$control$savePredictions)))
+  # stopifnot(all(sapply(list_of_models, function(x) x$control$savePredictions)))
 
   #Check that every model used the same resampling indexes
   indexes <- lapply(list_of_models, function(x) x$control$index)
@@ -132,7 +132,7 @@ makePredObsMatrix <- function(list_of_models){
 #' @importFrom pbapply pbsapply
 multiPredict <- function(list_of_models, type, ...){
   #TODO: Add progressbar argument
-  preds <- pbsapply(list_of_models, function(x){    
+  preds <- pbsapply(list_of_models, function(x){
     if (type=='Classification' & x$control$classProbs){
       as.data.frame(predict(x, type='prob', ...))[,2]
     } else {
